@@ -29,5 +29,20 @@ For example, `len(bin(29))` will give `7` as output. Subtract `2` to get the num
     |11| 01011 | 
     |27| 11011 |
     |29| 11101 |
-- The matrix is given by:<br>
-  
+- The matrix is given by (The numbers don't need to be in ascending order!):<br>
+  ![The Matrix](CodeCogsEqn.gif "The Matrix")
+- Study the matrix well. According to the question, it is only allowed to change a number. From the matrix, one can find that number.
+  - Inspect the matrix column-wise. Start inspecting from the left side. That is from the most significant bit. 
+  - If a column has more than `2` zero, jump to the next column.
+  - Until a column with exactly one zero is found, continue with the previous step.
+  - If it is found, note the row at which the zero occurred. For the above matrix, column `2` has only one zero. And the zero occurred in row `1`.
+  - Convert that binary number into decimal. Here, the conversion is `(00100)` to `4`.
+  - Replace that number from the orginal array with the largest number that can be made using that much of bits. Here the number of bits is `5`. The largest number using `5` bit is `31`. So replace `4` with `31` in the orginal array. Now the new array is **`[31,8,11,27,29]`**.
+  - Perform the and operation on this array. It will give the Maximum value. Here it is `8`.
+  ### Special Cases:
+  There may be a chance that there is no column with exactly `1` zero. If it happens, then rest is smooth! Perform the **`AND`** operation over the original array.  The result is the maximum possible value.
+
+## Conclusion
+
+The program `solution.py` was made using the above-explained strategy. The comments in the code will help to understand it. The code is not much efficient. As the size of the array increases, the run time also increases. Maybe the strategy is not much good enough. Anyway, there will be a new updated code that covers all these drawbacks. Until then, bye-bye!
+ 
